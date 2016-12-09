@@ -35,7 +35,6 @@ func main() {
 	q.Set("q", "language:"+lang)
 	q.Set("sort", "stars")
 	u.RawQuery = q.Encode()
-	fmt.Println(u)
 
 	resp, err := http.Get(u.String())
 	if err != nil {
@@ -48,8 +47,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	// fmt.Printf("%s", data)
 
 	var repos Repos
 	err = json.Unmarshal(data, &repos)
