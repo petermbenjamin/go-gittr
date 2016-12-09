@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 )
 
 var (
@@ -17,6 +18,11 @@ var (
 func init() {
 	flag.StringVar(&lang, "l", "", "Search by Language")
 	flag.Parse()
+
+	if flag.NFlag() == 0 {
+		flag.Usage()
+		os.Exit(0)
+	}
 }
 
 func main() {
